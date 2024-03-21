@@ -29,7 +29,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
   }
 
   void _simulateProgress(SplashEvent event, Emitter<SplashState> emit) async {
-    const int totalDurationSeconds = 5;
+    const int totalDurationSeconds = 4;
     for (int currentSecond = 1; currentSecond <= totalDurationSeconds; currentSecond++) {
       await Future.delayed(const Duration(seconds: 1));
       if (isClosed) return;

@@ -2,6 +2,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:test_evertec/app/core/module.dart';
 import 'package:test_evertec/app/module/auth/login/presenter/bloc/login_bloc.dart';
 import 'package:test_evertec/app/module/auth/login/presenter/page/page.dart';
+import 'package:test_evertec/app/module/auth/login/repository/repository.dart';
 
 class AuthModule extends Module {
   @override
@@ -9,6 +10,7 @@ class AuthModule extends Module {
 
   @override
   void binds(i) {
+    i.addLazySingleton(LoginRepository.new);
     i.addLazySingleton(LoginBloc.new);
   }
 
