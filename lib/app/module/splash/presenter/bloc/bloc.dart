@@ -23,7 +23,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
   void _onInitialize(SplashEvent event, Emitter<SplashState> emit) async {
     await prefs.init();
 
-    emit(InitialState(state.model.copyWith(isSessionActive: true)));
+    emit(InitialState(state.model));
 
     add(SimulateProgress());
   }
@@ -41,6 +41,6 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
   }
 
   void _finishLoading(Emitter<SplashState> emit) async {
-    emit(LoadedState(state.model.copyWith(isSessionActive: state.model.isSessionActive)));
+    emit(LoadedState(state.model.copyWith(isSessionActive: false)));
   }
 }

@@ -24,12 +24,14 @@ class _View extends StatelessWidget {
       backgroundColor: Colors.white,
       body: BlocListener<SplashBloc, SplashState>(
         listener: (context, state) {
-          if (!state.model.isSessionActive) {
-            //Modular.to.navigate('/auth/');
+          if (state is LoadedState) {
+            if (!state.model.isSessionActive) {
+              Modular.to.navigate('/auth/');
+            } else {
+              Modular.to.navigate('/home/');
+            }
             return;
           }
-
-          //Modular.to.navigate('/home/dashboard/');
         },
         child: Center(
           child: Hero(
