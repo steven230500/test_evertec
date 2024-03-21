@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_evertec/app/core/models/failure.dart';
+import 'package:test_evertec/app/core/utils/preferences.dart';
 import 'package:test_evertec/app/module/auth/login/domain/dto/usecase.dart';
 import 'package:test_evertec/app/module/auth/login/presenter/utils/validations.dart';
 import 'package:test_evertec/app/module/auth/login/repository/repository.dart';
@@ -10,7 +11,9 @@ part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final LoginRepository loginRepository;
-  LoginBloc({required this.loginRepository}) : super(const LoginInitial(Model())) {
+  final Preferences preferences;
+  LoginBloc({required this.loginRepository, required this.preferences})
+      : super(const LoginInitial(Model())) {
     on<ChangeShowPasswordEvent>(_onChangeShowPassword);
     on<UsernameChanged>(_onUsernameChanged);
     on<PasswordChanged>(_onPasswordChanged);
@@ -30,6 +33,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           storedUser.id == currentUser.id &&
           storedUser.password == currentUser.password &&
           storedUser.documentType == currentUser.documentType)) {
+        preferences.sesionActive = true;
         emit(LoadedState(state.model));
       } else {
         emit(

@@ -39,7 +39,7 @@ class _View extends StatelessWidget {
           }
           if (state is LoadedState) {
             Loading.hide(context);
-            showAlert(context, 'Success');
+            Modular.to.navigate('/home');
           }
           if (state is ErrorState) {
             Loading.hide(context);
