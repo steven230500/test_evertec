@@ -14,7 +14,6 @@ class HomeRepository {
 
     return response.when(
       ok: (data) {
-        log('Data: $data');
         final List<CovidData> covidData = [];
         for (final item in data) {
           covidData.add(CovidData.fromMap(item));
@@ -22,7 +21,6 @@ class HomeRepository {
         return Result.ok(covidData);
       },
       err: (failure) {
-        log('Error: $failure');
         return Result.err(failure);
       },
     );

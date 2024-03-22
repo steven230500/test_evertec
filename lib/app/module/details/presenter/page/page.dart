@@ -26,7 +26,9 @@ class _View extends StatelessWidget {
         title: const Text('Detalles por región'),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () {
+            Modular.to.navigate('/home');
+          },
         ),
       ),
       body: BlocBuilder<DetailsBloc, DetailsState>(
