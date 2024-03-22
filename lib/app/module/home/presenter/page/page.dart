@@ -33,7 +33,9 @@ class _View extends StatelessWidget {
       },
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Modular.to.navigate('/details');
+          },
           backgroundColor: Colors.orange,
           shape: const CircleBorder(),
           child: const Icon(
