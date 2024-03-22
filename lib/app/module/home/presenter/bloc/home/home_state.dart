@@ -18,6 +18,10 @@ class LoadedState extends HomeState {
   const LoadedState(super.model);
 }
 
+class CloseSesionState extends HomeState {
+  const CloseSesionState(super.model);
+}
+
 class ErrorState extends HomeState {
   const ErrorState(super.model, this.error);
   final Failure error;

@@ -10,3 +10,5 @@ sealed class HomeEvent extends Equatable {
 class LoadDeviceInfo extends HomeEvent {}
 
 class LoadCovidData extends HomeEvent {}
+
+class CloseSesion extends HomeEvent {}

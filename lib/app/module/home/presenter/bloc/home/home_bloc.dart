@@ -6,18 +6,29 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:test_evertec/app/core/models/covid.dart';
 import 'package:test_evertec/app/core/models/device_data.dart';
 import 'package:test_evertec/app/core/models/failure.dart';
+import 'package:test_evertec/app/core/utils/preferences.dart';
 import 'package:test_evertec/app/module/home/repository/repository.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
+  final Preferences prefs;
   final HomeRepository homeRepository;
   final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
 
-  HomeBloc({required this.homeRepository}) : super(HomeInitial(Model())) {
+  HomeBloc({
+    required this.homeRepository,
+    required this.prefs,
+  }) : super(HomeInitial(Model())) {
     on<LoadDeviceInfo>(_onLoadDeviceInfo);
     on<LoadCovidData>(_onLoadCovidData);
+    on<CloseSesion>(_onCloseSesion);
+  }
+
+  Future<void> _onCloseSesion(CloseSesion event, Emitter<HomeState> emit) async {
+    await prefs.clear();
+    emit(CloseSesionState(Model()));
   }
 
   Future<void> _onLoadCovidData(LoadCovidData event, Emitter<HomeState> emit) async {

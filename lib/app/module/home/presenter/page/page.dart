@@ -25,65 +25,76 @@ class _View extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: Colors.orange,
-        shape: const CircleBorder(),
-        child: const Icon(
-          Icons.add,
-          color: Colors.white,
+    return BlocListener<HomeBloc, HomeState>(
+      listener: (context, state) {
+        if (state is CloseSesionState) {
+          Modular.to.navigate('/');
+        }
+      },
+      child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          backgroundColor: Colors.orange,
+          shape: const CircleBorder(),
+          child: const Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
         ),
-      ),
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Column(
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Image.asset(
-                        'assets/images/splash.png',
-                        width: MediaQuery.of(context).size.width * 0.24,
-                      ),
-                      Expanded(
-                        flex: 5,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Image.asset(
-                            'assets/images/home.png',
-                            fit: BoxFit.contain,
+        backgroundColor: Colors.white,
+        body: SafeArea(
+          child: Stack(
+            children: [
+              Column(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image.asset(
+                          'assets/images/splash.png',
+                          width: MediaQuery.of(context).size.width * 0.24,
+                        ),
+                        Expanded(
+                          flex: 5,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: Image.asset(
+                              'assets/images/home.png',
+                              fit: BoxFit.contain,
+                            ),
                           ),
                         ),
-                      ),
-                      IconButton(onPressed: () {}, icon: const Icon(Icons.logout)),
-                    ],
+                        IconButton(
+                            onPressed: () {
+                              Modular.get<HomeBloc>().add(CloseSesion());
+                            },
+                            icon: const Icon(Icons.logout)),
+                      ],
+                    ),
                   ),
-                ),
-                const Expanded(
-                  flex: 3,
-                  child: DataContainer(),
-                ),
-              ],
-            ),
-            Align(
-              alignment: Alignment.topCenter,
-              child: Container(
-                margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.21),
-                child: const DeviceInfoContainer(),
+                  const Expanded(
+                    flex: 3,
+                    child: DataContainer(),
+                  ),
+                ],
               ),
-            ),
-            Positioned(
-              bottom: (MediaQuery.of(context).size.height / 2) * 0.95,
-              right: 10,
-              child: const CustomSwitch(),
-            ),
-          ],
+              Align(
+                alignment: Alignment.topCenter,
+                child: Container(
+                  margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.21),
+                  child: const DeviceInfoContainer(),
+                ),
+              ),
+              Positioned(
+                bottom: (MediaQuery.of(context).size.height / 2) * 0.95,
+                right: 10,
+                child: const CustomSwitch(),
+              ),
+            ],
+          ),
         ),
       ),
     );
