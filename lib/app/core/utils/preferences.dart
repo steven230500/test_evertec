@@ -11,6 +11,9 @@ class Preferences {
   bool get sesionActive => _prefs.getBool('sesionActive') ?? false;
   set sesionActive(bool value) => _prefs.setBool('sesionActive', value);
 
+  bool get isDarkMode => _prefs.getBool('isDarkMode') ?? false;
+  set isDarkMode(bool value) => _prefs.setBool('isDarkMode', value);
+
   Future<void> clear() async {
     try {
       await _prefs.clear();

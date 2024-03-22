@@ -21,8 +21,6 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
   }
 
   void _onInitialize(SplashEvent event, Emitter<SplashState> emit) async {
-    await prefs.init();
-
     emit(InitialState(state.model));
 
     add(SimulateProgress());

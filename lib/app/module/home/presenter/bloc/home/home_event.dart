@@ -6,3 +6,7 @@ sealed class HomeEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class LoadDeviceInfo extends HomeEvent {}
+
+class LoadCovidData extends HomeEvent {}

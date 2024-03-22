@@ -55,7 +55,7 @@ class _View extends StatelessWidget {
                   alignment: Alignment.bottomLeft,
                   children: [
                     Image.asset(
-                      'assets/images/login.webp',
+                      'assets/images/login.png',
                       width: double.infinity,
                       fit: BoxFit.cover,
                     ),

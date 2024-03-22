@@ -40,7 +40,7 @@ class _View extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  'assets/images/splash.webp',
+                  'assets/images/splash.png',
                   width: 200,
                 ),
                 const SizedBox(height: 160),
