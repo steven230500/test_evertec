@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:oxidized/oxidized.dart';
 import 'package:test_evertec/app/core/http/client.dart';
 import 'package:test_evertec/app/core/models/covid.dart';

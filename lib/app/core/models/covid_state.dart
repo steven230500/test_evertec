@@ -48,7 +48,7 @@ class CovidStateData extends Equatable {
   });
 
   factory CovidStateData.empty() {
-    return CovidStateData(
+    return const CovidStateData(
       state: '',
       date: 0,
       death: 0,
