@@ -8,6 +8,8 @@ class DeviceInfoContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final backgroundColor = Theme.of(context).colorScheme.surface;
+    final textColor = Theme.of(context).colorScheme.onSurface;
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
         if (state is LoadedState) {
@@ -48,7 +50,7 @@ class DeviceInfoContainer extends StatelessWidget {
             padding: const EdgeInsets.all(10.0),
             margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: backgroundColor,
               borderRadius: BorderRadius.circular(12.0),
               boxShadow: [
                 BoxShadow(
@@ -73,15 +75,15 @@ class DeviceInfoContainer extends StatelessWidget {
                     children: [
                       if (!isSpecial) ...[
                         Text(key,
-                            style: const TextStyle(
-                                fontSize: 10, fontWeight: FontWeight.bold, color: Colors.black)),
+                            style: TextStyle(
+                                fontSize: 10, fontWeight: FontWeight.bold, color: textColor)),
                         const SizedBox(height: 4),
-                        Text(value, style: const TextStyle(fontSize: 10, color: Colors.black))
+                        Text(value, style: TextStyle(fontSize: 10, color: textColor))
                       ] else ...[
-                        Text(value, style: const TextStyle(fontSize: 18, color: Colors.black)),
+                        Text(value, style: TextStyle(fontSize: 18, color: textColor)),
                         Text(key,
-                            style: const TextStyle(
-                                fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black)),
+                            style: TextStyle(
+                                fontSize: 12, fontWeight: FontWeight.bold, color: textColor)),
                       ]
                     ],
                   ),

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:test_evertec/app/core/models/covid.dart';
 import 'package:test_evertec/app/module/home/presenter/bloc/home/home_bloc.dart';
 import 'package:test_evertec/app/module/home/presenter/widgets/custom_switch.dart';
 import 'package:test_evertec/app/module/home/presenter/widgets/data_container.dart';
 import 'package:test_evertec/app/module/home/presenter/widgets/device_info.dart';
+
+part '../widgets/covid_data.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -73,7 +76,10 @@ class _View extends StatelessWidget {
                             onPressed: () {
                               Modular.get<HomeBloc>().add(CloseSesion());
                             },
-                            icon: const Icon(Icons.logout)),
+                            icon: const Icon(
+                              Icons.logout,
+                              color: Colors.grey,
+                            )),
                       ],
                     ),
                   ),
