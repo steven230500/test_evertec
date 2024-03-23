@@ -44,22 +44,25 @@ class _View extends StatelessWidget {
                   (data) => data.state.toLowerCase() == stateInfo.state.toLowerCase(),
                   orElse: () => CovidStateData.empty(),
                 );
-                return Container(
-                  margin: const EdgeInsets.all(8.0),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: Colors.grey[400]!, width: 1),
-                  ),
-                  child: ListTile(
-                    leading: const CircleAvatar(
-                      child: Icon(Icons.flag),
+                return GestureDetector(
+                  onTap: () => Modular.to.navigate('/state', arguments: stateInfo),
+                  child: Container(
+                    margin: const EdgeInsets.all(8.0),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.grey[400]!, width: 1),
                     ),
-                    title: Text(stateInfo.name),
-                    subtitle: Text(
-                      'Casos totales: ${covidData.positive}\nÚltima modificación: ${covidData.lastUpdateEt}',
+                    child: ListTile(
+                      leading: const CircleAvatar(
+                        child: Icon(Icons.flag),
+                      ),
+                      title: Text(stateInfo.name),
+                      subtitle: Text(
+                        'Casos totales: ${covidData.positive}\nÚltima modificación: ${covidData.lastUpdateEt}',
+                      ),
+                      trailing: const Icon(Icons.arrow_forward_ios),
                     ),
-                    trailing: const Icon(Icons.arrow_forward_ios),
                   ),
                 );
               },
